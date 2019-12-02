@@ -27,7 +27,7 @@ DSP Lab2 LTI System, Convolution and Frequency Response
 ### 各系統之頻率響應以及輸出波形與頻譜圖
 
 #### Input Signal
-![alt_text](https://github.com/t106360107/DSPlab2/blob/master/plot/Original Signal.png)
+![alt_text](https://github.com/t106360107/DSPlab2/blob/master/plot/Original_Signal.png)
 
 #### Ideal Delay
 ![alt_text](https://github.com/t106360107/DSPlab2/blob/master/plot/Delay_freqz.png)
@@ -50,15 +50,15 @@ DSP Lab2 LTI System, Convolution and Frequency Response
 ![alt_text](https://github.com/t106360107/DSPlab2/blob/master/plot/Backward_conv.png)
 
 ### 自定義 Convolution function: `Conv.m`
-此檔案為自定義之Convolution function。
-function [y, l]= Conv(h,x)
-y 回傳 h 及 x 摺機後之結果
+此檔案為自定義之Convolution function。<br />
+function [y, l]= Conv(h,x)<br />
+y 回傳 h 及 x 摺機後之結果<br />
 l 回傳摺機後之長度
 
 ### 自定義 Frequency response function: `Freqz.m`
-此檔案為自定義之Frequency response function並顯示頻率響應之結果。
-function H = Freqz(h, width, name)
-H 回傳 h 之頻率響應並依照width決定點的數量。
+此檔案為自定義之Frequency response function並顯示頻率響應之結果。<br />
+function H = Freqz(h, width, name)<br />
+H 回傳 h 之頻率響應並依照width決定點的數量。<br />
 name 為顯示結果之title。
 
 
