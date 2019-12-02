@@ -1,4 +1,4 @@
-# lab-2-basic-signal-and-spectrum-t106360107
+# lab-2-LTI-System-Convolution-and-Frequency-Response-t106360107
 DSP Lab2 LTI System, Convolution and Frequency Response
 
 
