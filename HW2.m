@@ -1,6 +1,6 @@
 clear all; close all;
 
-[x, fs] = audioread('test.wav');
+[x, fs] = audioread('input.wav');
 x = x';
 
 t = [0:1:(length(x)-1)]/fs; 
@@ -29,11 +29,11 @@ Freqz(h4, 512, 'Forward Difference');
 Freqz(h5, 512, 'Backward Difference');
 
 %LTI system------------------------------------
-[y1, l1] = Conv(h1,x);              %Ideal Delay
-[y2, l2] = Conv(h2,x);              %Moving Average
-[y3, l3] = Conv(h3,x);              %Accumulator
-[y4, l4] = Conv(h4,x);              %Forward Difference
-[y5, l5] = Conv(h5,x);              %Backward Difference
+[y1, l1] = Conv(h1,x,'valid');              %Ideal Delay
+[y2, l2] = Conv(h2,x,'valid');              %Moving Average
+[y3, l3] = Conv(h3,x, 'same');              %Accumulator
+[y4, l4] = Conv(h4,x,'valid');              %Forward Difference
+[y5, l5] = Conv(h5,x,'valid');              %Backward Difference
 
 
 %the signal after LTI system------------------
@@ -73,7 +73,9 @@ audiowrite('y2.wav', y2, fs);           %Moving Average
 audiowrite('y3.wav', y3, fs);           %Accumulator
 audiowrite('y4.wav', y4, fs);           %Forward Difference
 audiowrite('y5.wav', y5, fs);           %Backward Difference    
-
+%{
+input('press any key to play input sound');
+sound(x, fs);
 input('press any key to play the delay sound');
 sound(y1, fs);
 input('press any key to play the averaged sound');
@@ -85,3 +87,4 @@ sound(y4, fs);
 input('press any key to play the backward difference sound');
 sound(y5, fs);
 
+%}

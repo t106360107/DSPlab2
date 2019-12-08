@@ -6,8 +6,8 @@ function H = Freqz(h, width, name)
             H(n)=H(n)+h(k+1)*exp(-1i*l(n)*k);   
         end
     end
-    r = @(x)((abs(x)>1e-10).*x);     %check inaccurate value
-    magnitude=rr(20*r(log10(abs(H))));
+    r = @(x)((abs(x)>1e-10).*x);       %r: check inaccurate value (when x < 1e-10; x = 0)
+    magnitude=rr(20*r(log10(abs(H)))); %rr: check very low value (when x < -80 dB; x = NaN)
     
     phase=angle(H)*180/pi; %turn radian to angle
     figure;
@@ -18,7 +18,7 @@ function H = Freqz(h, width, name)
     xlabel('Frequency (\times\pi rad/sample)'); ylabel('phase(degrees)');   %show phase(degree)
 end
 
-function y = rr(x)    %check very low value
+function y = rr(x)    %check very low value (x < -80 dB)
     y = x;
     for i = 1:length(x)
         if x(i) < -80
